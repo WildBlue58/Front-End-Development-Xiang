@@ -58,7 +58,12 @@ export const dataAPI = {
 
   // 删除数据
   deleteData: (tableName, id, idColumn) =>
-    api.delete(`/data/${tableName}`, { data: { id, idColumn } }),
+    api.delete(`/data/${tableName}`, {
+      data: { id, idColumn },
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }),
 };
 
 // 表结构管理API
