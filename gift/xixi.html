@@ -1,266 +1,382 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>感谢😁</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Noto Serif SC', serif;
-        }
-        .petal {
-            position: fixed;
-            top: -10%;
-            z-index: 0;
-            user-select: none;
-            pointer-events: none;
-            animation-name: fall;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-        }
-        @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg) translateX(0);
-                opacity: 0.8;
-            }
-            25% {
-                transform: translateY(25vh) rotate(90deg) translateX(20px);
-            }
-            50% {
-                transform: translateY(50vh) rotate(180deg) translateX(-20px);
-            }
-            75% {
-                transform: translateY(75vh) rotate(270deg) translateX(20px);
-            }
-            100% {
-                transform: translateY(110vh) rotate(360deg) translateX(0);
-                opacity: 0;
-            }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-        /* Custom scrollbar hide */
-        ::-webkit-scrollbar {
-            width: 0px;
-            background: transparent;
-        }
-    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'soft-pink': '#FFD1DC',
-                        'soft-purple': '#E6E6FA',
-                        'mint-green': '#F0FFF0',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              serif: ['"Noto Serif SC"', "serif"],
+            },
+            colors: {
+              "soft-pink": "#FFD1DC",
+              "soft-purple": "#E6E6FA",
+              "mint-green": "#F0FFF0",
+            },
+            animation: {
+              blob: "blob 7s infinite",
+              float: "float 6s ease-in-out infinite",
+            },
+            keyframes: {
+              blob: {
+                "0%": { transform: "translate(0px, 0px) scale(1)" },
+                "33%": { transform: "translate(30px, -50px) scale(1.1)" },
+                "66%": { transform: "translate(-20px, 20px) scale(0.9)" },
+                "100%": { transform: "translate(0px, 0px) scale(1)" },
+              },
+              float: {
+                "0%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-10px)" },
+                "100%": { transform: "translateY(0px)" },
+              },
+            },
+          },
+        },
+      };
     </script>
-</head>
-<body class="bg-gradient-to-br from-pink-50 via-purple-50 to-green-50 min-h-screen flex flex-col items-center justify-center overflow-hidden relative selection:bg-pink-200">
-
-    <!-- Start Overlay (Required for Audio Autoplay) -->
-    <div id="start-overlay" class="fixed inset-0 z-50 bg-white/60 backdrop-blur-md flex flex-col items-center justify-center transition-all duration-1000">
-        <div class="bg-white p-8 rounded-full shadow-xl animate-float cursor-pointer transform hover:scale-105 transition-transform" onclick="startExperience()">
-            <div class="text-4xl mb-2 text-center">🪄</div>
-            <p class="text-gray-600 font-medium tracking-widest text-sm">点击开启</p>
+    <style>
+      body {
+        font-family: "Noto Serif SC", serif;
+      }
+      .petal {
+        position: fixed;
+        top: -10%;
+        z-index: 0;
+        user-select: none;
+        pointer-events: none;
+        animation-name: fall;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+      @keyframes fall {
+        0% {
+          transform: translateY(0) rotate(0deg) translateX(0);
+          opacity: 0.8;
+        }
+        25% {
+          transform: translateY(25vh) rotate(90deg) translateX(20px);
+        }
+        50% {
+          transform: translateY(50vh) rotate(180deg) translateX(-20px);
+        }
+        75% {
+          transform: translateY(75vh) rotate(270deg) translateX(20px);
+        }
+        100% {
+          transform: translateY(110vh) rotate(360deg) translateX(0);
+          opacity: 0;
+        }
+      }
+      /* Custom scrollbar hide */
+      ::-webkit-scrollbar {
+        width: 0px;
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gradient-to-br from-pink-50 via-slate-50 to-purple-50 min-h-screen flex flex-col items-center justify-center overflow-hidden relative selection:bg-pink-200 text-slate-800"
+  >
+    <!-- Start Overlay -->
+    <div
+      id="start-overlay"
+      class="fixed inset-0 z-50 bg-white/60 backdrop-blur-md flex flex-col items-center justify-center transition-all duration-1000"
+    >
+      <button
+        class="bg-white p-8 rounded-full shadow-2xl animate-float cursor-pointer transform hover:scale-105 active:scale-95 transition-all duration-300 group border border-pink-100/50"
+        onclick="startExperience()"
+        aria-label="Start Experience"
+      >
+        <div
+          class="w-12 h-12 mb-2 text-purple-500 group-hover:text-purple-600 transition-colors mx-auto"
+        >
+          <!-- Sparkles/Wand Icon -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+            />
+            <path d="M5 3v4" />
+            <path d="M9 3v4" />
+            <path d="M7 5h4" />
+            <path d="M7 5H3" />
+          </svg>
         </div>
-        <p class="mt-8 text-gray-400 text-xs tracking-widest uppercase">For You</p>
+        <p
+          class="text-slate-600 font-medium tracking-[0.2em] text-sm group-hover:text-slate-800 transition-colors"
+        >
+          点击开启
+        </p>
+      </button>
+      <p class="mt-8 text-slate-400 text-xs tracking-[0.3em] uppercase">
+        For You
+      </p>
     </div>
 
     <!-- Main Content Card -->
-    <main class="relative z-10 w-full max-w-md px-6 transition-all duration-1000 ease-out opacity-0 translate-y-10" id="main-card">
-        <div class="bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-[0_20px_50px_rgba(255,182,193,0.3)] border border-white/60 p-8 text-center relative overflow-hidden">
-            
-            <!-- Top Decoration -->
-            <div class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-pink-200 via-purple-200 to-green-200"></div>
-            <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+    <main
+      class="relative z-10 w-full max-w-md px-6 transition-all duration-1000 ease-out opacity-0 translate-y-10"
+      id="main-card"
+    >
+      <div
+        class="bg-white/80 backdrop-blur-xl rounded-[2rem] shadow-[0_20px_50px_rgba(255,182,193,0.25)] border border-white/60 p-8 text-center relative overflow-hidden ring-1 ring-white/50"
+      >
+        <!-- Top Decoration -->
+        <div
+          class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-pink-200 via-purple-200 to-green-200"
+        ></div>
+        <div
+          class="absolute -top-10 -right-10 w-32 h-32 bg-pink-100 rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-blob"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-32 h-32 bg-purple-100 rounded-full mix-blend-multiply filter blur-2xl opacity-60 animate-blob animation-delay-2000"
+        ></div>
 
-            <!-- Header -->
-            <div class="relative">
-                <span class="inline-block py-1 px-3 rounded-full bg-pink-100 text-pink-600 text-xs font-bold tracking-wider mb-4">THANK YOU</span>
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2 tracking-tight">感谢周文沛</h1>
-                <div class="w-12 h-1 bg-gradient-to-r from-pink-300 to-purple-300 mx-auto rounded-full mb-8"></div>
-            </div>
-
-            <!-- Core Message -->
-            <div class="space-y-8 relative z-10">
-                <div class="bg-white/50 rounded-xl p-6 shadow-sm border border-white/40 transform hover:scale-[1.02] transition-transform duration-300">
-                    <p class="text-xl md:text-2xl font-medium text-gray-700 leading-relaxed font-serif">
-                        “感谢你在我困难时的<br>
-                        <span class="text-pink-600">倾听与安慰</span>”
-                    </p>
-                </div>
-                
-                <div class="text-gray-600 text-sm md:text-base leading-loose font-light space-y-4 px-2">
-                    <p>
-                        回首那段时光，特别感谢你的安慰，<br>
-                        帮助我走出来。
-                    </p>
-                    <p>
-                        你的耐心和温柔，<br>
-                        愿意倾听我难过时候的话语。
-                    </p>
-                    <p>
-                        希望未来的日子里，<br>
-                        所有的美好都能与你不期而遇。
-                    </p>
-                </div>
-            </div>
-
-            <!-- Signature -->
-            <div class="mt-12 flex justify-end items-center space-x-2 opacity-80">
-                <div class="h-px w-8 bg-gray-400"></div>
-                <p class="text-gray-600 italic font-serif">王博扬</p>
-            </div>
-            
+        <!-- Header -->
+        <div class="relative">
+          <span
+            class="inline-block py-1.5 px-4 rounded-full bg-pink-50 text-pink-600 text-xs font-bold tracking-widest mb-6 border border-pink-100"
+            >THANK YOU</span
+          >
+          <h1
+            class="text-3xl md:text-4xl font-bold text-slate-800 mb-3 tracking-tight"
+          >
+            感谢周文沛
+          </h1>
+          <div
+            class="w-12 h-1 bg-gradient-to-r from-pink-300 to-purple-300 mx-auto rounded-full mb-10 opacity-80"
+          ></div>
         </div>
+
+        <!-- Core Message -->
+        <div class="space-y-8 relative z-10">
+          <div
+            class="bg-white/60 rounded-xl p-8 shadow-sm border border-white/50 transform hover:scale-[1.01] transition-transform duration-300"
+          >
+            <p
+              class="text-xl md:text-2xl font-medium text-slate-700 leading-relaxed"
+            >
+              “感谢你在我困难时的<br />
+              <span class="text-pink-600 relative inline-block">
+                倾听与安慰
+                <svg
+                  class="absolute -bottom-1 left-0 w-full h-2 text-pink-200 -z-10"
+                  viewBox="0 0 100 10"
+                  preserveAspectRatio="none"
+                >
+                  <path
+                    d="M0 5 Q 50 10 100 5"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    fill="none"
+                  />
+                </svg> </span
+              >”
+            </p>
+          </div>
+
+          <div
+            class="text-slate-600 text-sm md:text-base leading-loose font-normal space-y-5 px-2"
+          >
+            <p>
+              回首那段时光，特别感谢你的安慰，<br />
+              帮助我走出来。
+            </p>
+            <p>
+              你的耐心和温柔，<br />
+              愿意倾听我难过时候的话语。
+            </p>
+            <p>
+              希望未来的日子里，<br />
+              所有的美好都能与你不期而遇。
+            </p>
+          </div>
+        </div>
+
+        <!-- Signature -->
+        <div class="mt-12 flex justify-end items-center space-x-3 opacity-80">
+          <div class="h-px w-8 bg-slate-300"></div>
+          <p class="text-slate-500 italic">王博扬</p>
+        </div>
+      </div>
     </main>
 
     <!-- Hidden Easter Egg Message -->
-    <div id="easter-egg" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 transition-opacity duration-500">
-        <div class="bg-white/90 backdrop-blur-md px-8 py-4 rounded-full shadow-2xl border border-pink-100">
-            <p class="text-pink-500 font-bold text-lg whitespace-nowrap">无限进步</p>
-        </div>
+    <div
+      id="easter-egg"
+      class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none opacity-0 transition-opacity duration-500"
+    >
+      <div
+        class="bg-white/95 backdrop-blur-md px-8 py-4 rounded-full shadow-2xl border border-pink-100 flex items-center gap-2"
+      >
+        <span class="text-xl animate-pulse">✨</span>
+        <p
+          class="text-pink-500 font-bold text-lg whitespace-nowrap tracking-wide"
+        >
+          无限进步
+        </p>
+      </div>
     </div>
 
     <!-- Background Music -->
-    <!-- Music: Summer by Joe Hisaishi (Kikujiro) -->
     <audio id="bg-music" loop>
-        <!-- Try NetEase Cloud Music direct link -->
-        <source src="https://music.163.com/song/media/outer/url?id=443242.mp3" type="audio/mpeg">
-        <!-- Fallback to a secondary source if the first one fails or is blocked -->
-        <source src="https://archive.org/download/1.-summer-1/1.%20Summer%28%201%29.mp3" type="audio/mpeg">
+      <source
+        src="https://music.163.com/song/media/outer/url?id=443242.mp3"
+        type="audio/mpeg"
+      />
+      <source
+        src="https://archive.org/download/1.-summer-1/1.%20Summer%28%201%29.mp3"
+        type="audio/mpeg"
+      />
     </audio>
 
     <script>
-        // Configuration
-        const CONFIG = {
-            petalCount: 20,
-            spawnInterval: 400
-        };
+      // Configuration
+      const CONFIG = {
+        petalCount: 20,
+        spawnInterval: 400,
+      };
 
-        // State
-        let isPlaying = false;
-        let clickCount = 0;
-        let clickTimer = null;
+      // State
+      let isPlaying = false;
+      let clickCount = 0;
+      let clickTimer = null;
 
-        // Elements
-        const overlay = document.getElementById('start-overlay');
-        const mainCard = document.getElementById('main-card');
-        const audio = document.getElementById('bg-music');
-        const egg = document.getElementById('easter-egg');
+      // Elements
+      const overlay = document.getElementById("start-overlay");
+      const mainCard = document.getElementById("main-card");
+      const audio = document.getElementById("bg-music");
+      const egg = document.getElementById("easter-egg");
 
-        // Functions
-        function startExperience() {
-            if (isPlaying) return;
-            isPlaying = true;
+      // Functions
+      function startExperience() {
+        if (isPlaying) return;
+        isPlaying = true;
 
-            // Fade out overlay
-            overlay.style.opacity = '0';
-            setTimeout(() => overlay.remove(), 1000);
+        // Fade out overlay
+        overlay.style.opacity = "0";
+        setTimeout(() => overlay.remove(), 1000);
 
-            // Show main card
-            mainCard.classList.remove('opacity-0', 'translate-y-10');
+        // Show main card
+        mainCard.classList.remove("opacity-0", "translate-y-10");
 
-            // Play Music
-            // Note: Replace the src in <audio> if this link expires.
-            audio.volume = 0.4;
-            const playPromise = audio.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log("Audio play failed (browser policy):", error);
-                });
-            }
-
-            // Start Petals
-            setInterval(createPetal, CONFIG.spawnInterval);
+        // Play Music
+        audio.volume = 0.4;
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.log("Audio play failed (browser policy):", error);
+          });
         }
 
-        function createPetal() {
-            const petal = document.createElement('div');
-            petal.className = 'petal absolute text-pink-300/60';
-            // Random petal shapes using simple characters or SVGs could go here. 
-            // Using characters for simplicity and performance.
-            const shapes = ['🌸', '❀', '💮', '🍃']; 
-            petal.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
-            
-            // Randomize physics
-            const startLeft = Math.random() * 100;
-            const duration = Math.random() * 5 + 5; // 5-10s
-            const size = Math.random() * 1 + 0.8; // 0.8 - 1.8rem
-            
-            petal.style.left = startLeft + 'vw';
-            petal.style.fontSize = size + 'rem';
-            petal.style.animationDuration = duration + 's';
-            
-            document.body.appendChild(petal);
+        // Start Petals
+        setInterval(createPetal, CONFIG.spawnInterval);
+      }
 
-            // Cleanup
-            setTimeout(() => {
-                petal.remove();
-            }, duration * 1000);
+      function createPetal() {
+        const petal = document.createElement("div");
+        petal.className = "petal absolute text-pink-300/40";
+
+        // SVG shapes for petals
+        const shapes = [
+          // Simple petal shape
+          '<svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full"><path d="M12 2C12 2 10 7 10 12C10 17 12 22 12 22C12 22 14 17 14 12C14 7 12 2 12 2Z"/></svg>',
+          // Rounder petal
+          '<svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full"><circle cx="12" cy="12" r="6"/></svg>',
+        ];
+
+        petal.innerHTML = shapes[Math.floor(Math.random() * shapes.length)];
+
+        // Randomize physics
+        const startLeft = Math.random() * 100;
+        const duration = Math.random() * 5 + 5; // 5-10s
+        const size = Math.random() * 1 + 1; // 1 - 2rem
+
+        petal.style.left = startLeft + "vw";
+        petal.style.width = size + "rem";
+        petal.style.height = size + "rem";
+        petal.style.animationDuration = duration + "s";
+
+        document.body.appendChild(petal);
+
+        // Cleanup
+        setTimeout(() => {
+          petal.remove();
+        }, duration * 1000);
+      }
+
+      // Interaction Logic
+      document.body.addEventListener("click", (e) => {
+        if (!isPlaying) return;
+
+        // 1. Click Ripple/Heart Effect
+        createClickEffect(e.clientX, e.clientY);
+
+        // 2. Easter Egg Logic (Rapid clicks)
+        clickCount++;
+        if (clickTimer) clearTimeout(clickTimer);
+
+        clickTimer = setTimeout(() => {
+          clickCount = 0;
+        }, 1000);
+
+        if (clickCount >= 3) {
+          showEasterEgg();
+          clickCount = 0;
         }
+      });
 
-        // Interaction Logic
-        document.body.addEventListener('click', (e) => {
-            if (!isPlaying) return;
+      function createClickEffect(x, y) {
+        const heart = document.createElement("div");
+        // SVG Heart
+        heart.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-full h-full"><path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" /></svg>';
 
-            // 1. Click Ripple/Heart Effect
-            createClickEffect(e.clientX, e.clientY);
+        heart.className =
+          "fixed pointer-events-none text-pink-400/60 transition-all duration-700 ease-out z-40";
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+        heart.style.width = "24px";
+        heart.style.height = "24px";
+        heart.style.transform = "translate(-50%, -50%) scale(0.5)";
 
-            // 2. Easter Egg Logic (Rapid clicks)
-            clickCount++;
-            if (clickTimer) clearTimeout(clickTimer);
-            
-            clickTimer = setTimeout(() => {
-                clickCount = 0;
-            }, 1000);
+        document.body.appendChild(heart);
 
-            if (clickCount >= 3) {
-                showEasterEgg();
-                clickCount = 0;
-            }
+        requestAnimationFrame(() => {
+          heart.style.transform =
+            "translate(-50%, -150%) scale(2.5) rotate(" +
+            (Math.random() * 40 - 20) +
+            "deg)";
+          heart.style.opacity = "0";
         });
 
-        function createClickEffect(x, y) {
-            const heart = document.createElement('div');
-            heart.innerHTML = '🌸';
-            heart.className = 'fixed pointer-events-none text-red-400 transition-all duration-700 ease-out z-40';
-            heart.style.left = x + 'px';
-            heart.style.top = y + 'px';
-            heart.style.transform = 'translate(-50%, -50%) scale(0.5)';
-            
-            document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 700);
+      }
 
-            requestAnimationFrame(() => {
-                heart.style.transform = 'translate(-50%, -150%) scale(1.5)';
-                heart.style.opacity = '0';
-            });
+      function showEasterEgg() {
+        egg.classList.remove("opacity-0");
+        egg.style.transform = "translate(-50%, -50%) scale(1.1)";
 
-            setTimeout(() => heart.remove(), 700);
-        }
-
-        function showEasterEgg() {
-            egg.classList.remove('opacity-0');
-            egg.style.transform = 'translate(-50%, -50%) scale(1.1)';
-            
-            setTimeout(() => {
-                egg.classList.add('opacity-0');
-                egg.style.transform = 'translate(-50%, -50%) scale(1)';
-            }, 2000);
-        }
+        setTimeout(() => {
+          egg.classList.add("opacity-0");
+          egg.style.transform = "translate(-50%, -50%) scale(1)";
+        }, 2000);
+      }
     </script>
-</body>
+  </body>
 </html>
