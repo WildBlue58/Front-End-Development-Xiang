@@ -19,7 +19,7 @@ function TableStructureViewer({ structure }) {
                     >
                       {head}
                     </th>
-                  )
+                  ),
                 )}
               </tr>
             </thead>
