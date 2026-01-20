@@ -199,3 +199,24 @@ Promise.myAll7 = function (promises) {
         })
     })
 }
+
+Promise.myAll8 = function (promises) {
+    return new Promise((resolve, reject) => {
+        const len = promises.length
+        let count = 0
+        const result = []
+
+        Promise.forEach((p, index) => {
+            Promise.resolve(p).then((res) => {
+                result[index] = res
+                count++
+
+                if (count === len) {
+                    resolve(result)
+                }
+            }, (err) => {
+                reject(err)
+            })
+        })
+    })
+}
